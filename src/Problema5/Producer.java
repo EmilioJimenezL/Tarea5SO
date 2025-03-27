@@ -12,7 +12,8 @@ public class Producer extends Thread {
         try {
             for (int i = 0; i < 10; i++) {
                 belt.produce(i);
-                System.out.println("Produced: " + i);
+                System.out.println("Producido: " + i);
+                Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();

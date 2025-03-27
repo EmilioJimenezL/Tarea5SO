@@ -12,7 +12,8 @@ public class Consumer extends Thread {
         try {
             for (int i = 0; i < 10; i++) {
                 int value = belt.consume();
-                System.out.println("Consumed: " + value);
+                System.out.println("Consumido: " + value);
+                Thread.sleep(2000);
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
