@@ -1,6 +1,8 @@
 package Problema4;
 
 import java.util.concurrent.Semaphore;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class BarberShop {
     private final Semaphore barber = new Semaphore(1);
@@ -8,6 +10,7 @@ public class BarberShop {
     private final Semaphore accessSeats = new Semaphore(1);
     private final int numberOfSeats;
     private int freeSeats;
+    private final Queue<Customer> customerList  = new LinkedList<>();
 
     public BarberShop(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
@@ -24,7 +27,7 @@ public class BarberShop {
             getHaircut();
         } else {
             accessSeats.release();
-            System.out.println("Customer leaves, no free seats.");
+            System.out.println("El cliente se va, no hay asientos.");
         }
     }
 
@@ -40,12 +43,12 @@ public class BarberShop {
     }
 
     private void getHaircut() throws InterruptedException {
-        System.out.println("Customer is getting a haircut.");
+        System.out.println("El cliente esta recibiendo un corte de pelo");
         Thread.sleep((long) (Math.random() * 1000));
     }
 
     private void cutHair() throws InterruptedException {
-        System.out.println("Barber is cutting hair.");
+        System.out.println("El barbero esta cortando el pelo");
         Thread.sleep((long) (Math.random() * 1000));
     }
 }

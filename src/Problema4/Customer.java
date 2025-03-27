@@ -10,6 +10,7 @@ public class Customer extends Thread {
     @Override
     public void run() {
         try {
+            System.out.println("Un cliente entra...");
             shop.customerWalksIn();
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
